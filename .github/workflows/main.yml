@@ -6,16 +6,18 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest    # downloads a copy of your repository on the runner
+    runs-on: ubuntu-latest          # downloads a copy of your repository on the runner
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 1.8  #configures the Java 1.8 JDK
+      - name: Set up JDK 1.8        #configures the Java 1.8 JDK
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
       - name: Build with Gradle
         run: echo Attempt to build
-        
-        # run: ./gradlew build  
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew     #to gain gradlew run permission        
+      - name: Build
+        run: ./gradlew build  
         #runs the gradlew wrapper script to ensure that your code builds, tests pass, and a package can be created
