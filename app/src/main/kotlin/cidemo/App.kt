@@ -6,7 +6,7 @@ package cidemo
 class App {
     val greeting: String
         get() {
-            return "Hello World!"
+            return "Hello World with CI!"
         }
 }
 
