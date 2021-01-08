@@ -15,5 +15,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Gradle
+        run: echo Attempt to build
+        
         # run: ./gradlew build  
         #runs the gradlew wrapper script to ensure that your code builds, tests pass, and a package can be created
