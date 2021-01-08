@@ -11,5 +11,7 @@ class AppTest {
         val classUnderTest = App()
         assertNotNull(classUnderTest.greeting, "app should have a greeting")
         //assert(2==0)   //to check what happens with a failure
+        //val v = classUnderTest.getNumOfActors()
+        assert( classUnderTest.getNumOfActors() == 2 )
     }
 }

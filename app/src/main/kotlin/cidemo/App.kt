@@ -8,8 +8,17 @@ class App {
         get() {
             return "Hello World with CI!"
         }
+
+    fun getNumOfActors() : Int{
+        UtilsInKotlin.loadRules()
+        UtilsInKotlin.showSystemConfiguration()
+        val v = UtilsInKotlin.getActorNumber()
+        println("App v=$v")
+        return v
+    }
 }
 
 fun main(args: Array<String>) {
     println(App().greeting)
+    println(  "numOfActors = ${App().getNumOfActors()}")
 }
