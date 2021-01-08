@@ -21,3 +21,7 @@ jobs:
       - name: Build
         run: ./gradlew build  
         #runs the gradlew wrapper script to ensure that your code builds, tests pass, and a package can be created
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Package
+          path: build/libs
