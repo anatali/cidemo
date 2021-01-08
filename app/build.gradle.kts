@@ -40,3 +40,10 @@ application {
     // Define the main class for the application.
     mainClass.set("cidemo.AppKt")
 }
+
+//ADDED
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "cidemo.AppKt"
+    }
+}
