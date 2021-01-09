@@ -3,17 +3,36 @@
  */
 package cidemo
 
+import org.junit.Before             //ADDED
 import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class AppTest {
-    @Test fun testAppHasAGreeting() {
+    lateinit var classUnderTest : App
+
+    @Before
+    fun showDirPath(){
+        println("----------------------------------------------------")
         val userDirPath = System.getProperty("user.dir")
         println("AppTest | userDirPath= $userDirPath")
-        val classUnderTest = App()
+        classUnderTest = App()
+    }
+
+    @Test fun testAppHasAGreeting() {
+        //val classUnderTest = App()
+        println("AppTest | testAppHasAGreeting")
         assertNotNull(classUnderTest.greeting, "app should have a greeting")
+    }
+
+    @Test fun testError() {
+        println("AppTest | testError")
         //assert(2==0)   //to check what happens with a failure
-        //val numOfActors = classUnderTest.getNumOfActors()
-        //assert( numOfActors == 2 )
+    }
+
+    @Test fun testProlog() {
+        //val classUnderTest = App()
+        println("AppTest | testProlog")
+        val numOfActors = classUnderTest.getNumOfActors()
+        assert( numOfActors == 2 )
     }
 }
