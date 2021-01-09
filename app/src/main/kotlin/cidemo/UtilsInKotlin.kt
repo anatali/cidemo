@@ -8,12 +8,14 @@ object UtilsInKotlin {
 
     fun loadRules() {
         try {
-            val sol1 = engine.solve("consult('../unibolibs/sysRules.pl').")
-            println("UtilsInKotlin | testProlog sol1= $sol1")
+            val userDirPath = System.getProperty("user.dir").replace("\\app","")
+            println("UtilsInKotlin | loadRules userDirPath= $userDirPath")
+            val sol1 = engine.solve("consult('$userDirPath/unibolibs/sysRules.pl').")
+            println("UtilsInKotlin | loadRules load sysRules.pl= $sol1")
             val sol2 = engine.solve("consult('demo0.pl').") //tuprolog works on unibolibs
-            println("UtilsInKotlin | testProlog sol2= $sol2")
+            println("UtilsInKotlin | loadRules load demo0.pl= $sol2")
         } catch (e: Exception) {
-            println("UtilsInKotlin | testProlog ERROR " + e.message)
+            println("UtilsInKotlin | loadRules ERROR " + e.message)
         }        
     }
     

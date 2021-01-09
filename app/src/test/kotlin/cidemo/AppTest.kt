@@ -8,10 +8,12 @@ import kotlin.test.assertNotNull
 
 class AppTest {
     @Test fun testAppHasAGreeting() {
+        val userDirPath = System.getProperty("user.dir")
+        println("AppTest | userDirPath= $userDirPath")
         val classUnderTest = App()
         assertNotNull(classUnderTest.greeting, "app should have a greeting")
         //assert(2==0)   //to check what happens with a failure
-        //val v = classUnderTest.getNumOfActors()
-        assert( classUnderTest.getNumOfActors() == 2 )
+        val numOfActors = classUnderTest.getNumOfActors()
+        assert( numOfActors == 2 )
     }
 }

@@ -11,14 +11,15 @@ class App {
 
     fun getNumOfActors() : Int{
         UtilsInKotlin.loadRules()
-        UtilsInKotlin.showSystemConfiguration()
-        val v = UtilsInKotlin.getActorNumber()
-        println("App v=$v")
-        return v
+        //UtilsInKotlin.showSystemConfiguration()
+        val numOfActors = UtilsInKotlin.getActorNumber()
+        println("App numOfActors=$numOfActors")
+        return numOfActors
     }
 }
 
 fun main(args: Array<String>) {
-    println(App().greeting)
-    println(  "numOfActors = ${App().getNumOfActors()}")
+    val app = App()
+    println(app.greeting)
+    println(  "numOfActors = ${app.getNumOfActors()}")
 }
