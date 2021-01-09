@@ -19,7 +19,7 @@ plugins {
 repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
-    flatDir {dirs( "C:\\Didattica2018Work\\cidemo\\unibolibs")}   //ADDED TO ACCESS the unibo local library
+    flatDir {dirs( "C:/Didattica2018Work/cidemo/unibolibs")}   //ADDED TO ACCESS the unibo local library
 }
 
 dependencies {
@@ -46,7 +46,7 @@ application {
     mainClass.set("cidemo.AppKt")
 }
 
-println("userdir= $userDir mainClass=${application.mainClass.get()}")
+//println("userdir= $userDir  mainClass=${application.mainClass.get()}")
 //ADDED
 tasks.withType<Jar> {
     manifest {

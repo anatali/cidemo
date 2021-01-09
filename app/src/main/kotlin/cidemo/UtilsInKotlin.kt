@@ -8,7 +8,8 @@ object UtilsInKotlin {
 
     fun loadRules() {
         try {
-            val userDirPath = System.getProperty("user.dir").replace("\\app","")
+            val userDirPath = System.getProperty("user.dir").replace("\\","/").replace("/app","")
+            //userDirPath is C:\Didattica2018Work\cidemo\app when run the test (?)
             println("UtilsInKotlin | loadRules userDirPath= $userDirPath")
             val sol1 = engine.solve("consult('$userDirPath/unibolibs/sysRules.pl').")
             println("UtilsInKotlin | loadRules load sysRules.pl= $sol1")
