@@ -20,7 +20,7 @@ repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
     //flatDir {dirs( "C:\\Didattica2018Work\\cidemo\\unibolibs")}
-    flatDir {dirs( "C:/Didattica2018Work/cidemo/unibolibs")}
+    flatDir {dirs( "file:///C:/Didattica2018Work/cidemo/unibolibs")}
     //ADDED TO ACCESS the unibo local library. If we use / does not work on ubuntu build
 }
 
