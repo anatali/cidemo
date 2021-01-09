@@ -47,7 +47,8 @@ application {
     mainClass.set("cidemo.AppKt")
 }
 
-//println("userdir= $userDir  mainClass=${application.mainClass.get()}")
+println("userdir= $userDir  mainClass=${application.mainClass.get()}")
+
 //ADDED
 tasks.withType<Jar> {
     manifest {
