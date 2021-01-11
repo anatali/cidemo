@@ -56,3 +56,6 @@ tasks.withType<Jar> {
         attributes["Main-Class"] = "cidemo.AppKt"
     }
 }
+
+//https://www.youtube.com/watch?v=R8_veQiYBjI
+//https://www.youtube.com/watch?v=3c-iBn73dDE
