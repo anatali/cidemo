@@ -11,7 +11,7 @@ object UtilsInKotlin {
             val userDirPath = System.getProperty("user.dir").replace("\\","/")
             //userDirPath is C:\Didattica2018Work\cidemo\app when run the test (?)
             var kbDir = "."
-            if( userDirPath.contains("/app"))  kbDir = ".."
+            //if( userDirPath.contains("/app"))  kbDir = ".."
             println("UtilsInKotlin | loadRules userDirPath= $userDirPath")
             //val sol1 = engine.solve("consult('$userDirPath/unibolibs/sysRules.pl').")
             val sol1 = engine.solve("consult('$kbDir/sysRules.pl').")
