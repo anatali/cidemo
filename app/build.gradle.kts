@@ -14,6 +14,10 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+
+    //Gradle plugins for working with Docker containers
+    id( "com.palantir.docker" ) version "0.25.0"
+    //id( "com.palantir.docker-run")  version "0.25.0"
 }
 
 repositories {
@@ -48,7 +52,7 @@ application {
     mainClass.set("cidemo.AppKt")
 }
 
-println("userdir= $userDir  mainClass=${application.mainClass.get()}")
+println("userdir= $userDir  project.name=${project.name} mainClass=${application.mainClass.get()}")
 
 //ADDED
 tasks.withType<Jar> {
@@ -57,5 +61,29 @@ tasks.withType<Jar> {
     }
 }
 
-//https://www.youtube.com/watch?v=R8_veQiYBjI
-//https://www.youtube.com/watch?v=3c-iBn73dDE
+/*
+DOCKER-RELATED
+*/
+/*
+specify a configuration for the com.palantir.docker plugin to build the image
+*/
+
+task("hello") {
+    doLast {
+        println("Hello world from app - this=${this}")
+    }
+}
+/*
+task("mydocker") {
+    doLast{
+        docker{
+            this.name (  "appxx" )
+            files("app.jar")
+        }
+    }
+}
+*/
+docker{
+    name(  "appxx" )
+    files("app.jar")
+}
