@@ -27,7 +27,7 @@ object UtilsInKotlin {
         try {
               engine.solve("showSystemConfiguration.")
         } catch (e: Exception) {
-            println("UtilsInKotlin | testProlog ERROR " + e.message)
+            println("UtilsInKotlin | showSystemConfiguration ERROR " + e.message)
         }
     }
     

@@ -9,8 +9,13 @@ FROM openjdk:12.0.2
 # -------------------------------------------------------
 # COPY with local tar file auto-extraction into the image
 # -------------------------------------------------------
-ADD ./app/build/distributions/*.tar  /
+## ADD ./build/distributions/cidemo.tar  /
+## ADD cidemo.tar  /
+####### we exposed app/build/distributions/cidemo.tar
+ADD *.tar  /
 
+#Paths in a Dockerfile are always relative to the the context directory.
+#The context directory is the positional argument passed to docker build (often .).
 # -------------------------------------------------------
 # define the working directory of the Docker container
 # -------------------------------------------------------
