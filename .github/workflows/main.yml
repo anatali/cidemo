@@ -32,4 +32,4 @@ jobs:
           #name: Package
           #path: app/build/libs
           name: AppDistribution
-          path: app/build/distributions/*.tar
+          path: app/build/distributions
