@@ -1,24 +1,6 @@
-version: '3'
+version: '3.8'  #see https://docs.docker.com/compose/compose-file/compose-versioning/
 
 services:
-  basicrobot:
+  app:
     build: ./
-    image: basicrobot
-    mem_limit: 350m
-    networks:
-      unibo-network:
-        ipv4_address: "172.17.0.2"
-  console:
-    build: ./
-    image: console
-    mem_limit: 350m
-    networks:
-      unibo-network:
-        ipv4_address: "172.17.0.3"
-
-networks:
-  unibo-network:
-    name: unibo-network
-    ipam:
-      config:
-        - subnet: 172.17.0.0/16
+    image: app_composer  #repository name must be lowercase

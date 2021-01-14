@@ -98,7 +98,7 @@ m{
  	font-size: 75%;
 }
 div.body{
-	width: 700px;
+	width: 800px;
     font-size: 15px;
 }
 k{
@@ -269,25 +269,34 @@ function myFunction() {
 <h2>Working</h2> 
 <ol>
 <li><h3>Use GitHub Actions</h3>
-<a href="../.github/workflows/main.yml" target="code">main.yml</a>
+<div class="remark">
+We set a workflow related to events <k>push</k>.<br/>
+The workflow is defined and explained in: <a href="../.github/workflows/main.yml" target="code">main.yml</a>
+</div>
+
 <br/>
 <a href="https://github.com/anatali/cidemo/actions" target="web">https://github.com/anatali/cidemo/actions</a>
 <br/>
-<a href="https://github.com/anatali/cidemo/actions/runs/485182361" target="web">ARTIFACTS on GitHub</a>
+<a href="https://github.com/anatali/cidemo/actions/runs/485207496" target="web">ARTIFACTS on GitHub</a>
 
 
 
 
 </li>
 <li>
-<h3>Build and use docker</h3> 
+<h3>Use docker</h3> 
+<div class="remark">
+We create an run an image using <k>docker</k> commands.<br/>
+The <a href="../Dockerfile" target="code">Dockerfile</a> extracts the distribution and runs <tt>bash ./app</tt> under the WORKDIR <tt>/app-1.2/bin</tt>.
+</div>
+
 Work in <ks>C:\Didattica2018Work\cidemo</ks>
 <pre>
 gradlew build                 <kc>//Use <a href="../app/build.gradle.kts" target="code">build.gradle.kts</a> in <a href="../app" target="code">app</a></kc>
 
-docker build -t xxx:1.2 .     <kc>//Use <a href="../Dockerfile" target="code">Dockerfile</a> in <a href="../" target="code">cidemo</a></kc>
+docker build -t app_img:1.2 .  <kc>//Creates an inage using <a href="../Dockerfile" target="code">Dockerfile</a> in <a href="../" target="code">cidemo</a></kc>
 
-docker run -ti --rm xxx:1.2   <kc>//Run the application and removes the container when finish</kc>
+docker run -ti --rm app_img:1.2   <kc>//Run the application and removes the container when finish</kc>
 --------------------------------------------------------------
 Hello World with CI!
 UtilsInKotlin | loadRules userDirPath= /app-1.2/bin
@@ -298,16 +307,55 @@ numOfActors = 2
 --------------------------------------------------------------
 
 
-docker run -ti --rm xxx:1.2 /bin/bash  <kc>//Run a shell and removes the container when CTRL-D</kc>
+docker run -ti --rm app_img:1.2 /bin/bash  <kc>//Run a shell and removes the container when CTRL-D</kc>
 --------------------------------------------------------------
 bash-4.2# ls
 app  app.bat  demo0.pl  sysRules.pl
 bash-4.2# 
 --------------------------------------------------------------
 </pre>
+
+<h4>Register the image on <a href="https://hub.docker.com/?ref=login">DockerHub</a></h4>
+<div class="remark">
+We gain access to <a href="https://hub.docker.com/?ref=login">DockerHub</a> (just once), tag the image and store the image.
+Afterwards, we run the application by reading the image form the <a href="https://hub.docker.com/?ref=login">DockerHub</a><br/>
+</div>
+<pre>
+docker login -u="natbodocker" -p="...."	   <kc>Login in DockerHub. Better to get the password from a private file:</kc>	
+type docker_password.txt | docker login --username natbodocker --password-stdin    				
+docker tag app_img:1.2 natbodocker/appstored:1.2
+
+docker push natbodocker/appstored:1.2	<kc>Store the image in <a href="https://hub.docker.com/?ref=login">DockerHub</a></kc>
+</pre>
+
+<h4>Run the image from <a href="https://hub.docker.com/?ref=login">DockerHub</a></h4>
+
+<pre>
+docker run -it --rm <k>docker.io</k>/natbodocker/appstored:1.2
+docker run -it --rm <k>docker.io</k>/natbodocker/appstored:1.2 /bin/bash	 
+</pre>
 </li>
+
+
+
 <li><h3>Use docker-compose</h3>
-<a href="../docker-compose.yml" target="code">docker-compose.yml</a>
+<div class="remark">
+We exploit <k>docker-compose</k> to build an image named <ks>app_composer</ks> and run the application.<br/>
+The <a href="../docker-compose.yml" target="code">docker-compose.yml</a> ( the version number is taken from
+ <a href="https://docs.docker.com/compose/compose-file/compose-versioning/" target="web">Compose file versions</a>)
+</div>
+
+Work in <ks>C:\Didattica2018Work\cidemo</ks>
+<pre>
+docker --version
+Docker version 19.03.13, build 4484c46d9d
+
+gradlew build        <kc>Creates the distribution in <a href="../app/build/distributions" target="code">app/build/distributions</a></kc>
+docker-compose up    <kc>Creates the docker image named <ks>app_composer</ks> and a container</kc>
+docker-compose down  <kc>Removes container</kc>
+
+docker-compose up    <kc>The image <ks>app_composer</ks> is still there</kc>
+</pre>
 </li>
 </ol>
 
