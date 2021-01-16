@@ -36,7 +36,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: mr-smithers-excellent
         with:
-          image: nanajanashia/demo-app
+          image: natbodocker/appstored
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
