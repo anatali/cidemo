@@ -33,10 +33,10 @@ jobs:
           #path: app/build/libs
           name: AppDistribution
           path: app/build/distributions/*.tar
-      - name: Push to Docker Hub
-        uses: docker/build-push-action@v2
+      - name: Build and Push Docker Image
+        uses:mr-smithers-excellent
         with:
-            username: ${{ secrets.DOCKER_USERNAME }}
-            password: ${{ secrets.DOCKER_PASSWORD }}
-            repository: docker.io/natbodocker
-            tag_with_ref: true
+          image: nanajanashia/demo-app
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
