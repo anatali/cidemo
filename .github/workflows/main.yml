@@ -33,9 +33,9 @@ jobs:
           #path: app/build/libs
           name: AppDistribution
           path: app/build/distributions/*.tar
-       - name: Push to Docker Hub
-          uses: docker/build-push-action@v1
-          with:
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
             repository: docker.io/natbodocker
