@@ -34,7 +34,7 @@ jobs:
           name: AppDistribution
           path: app/build/distributions/*.tar
       - name: Build and Push Docker Image
-        uses: mr-smithers-excellent
+        uses: mr-smithers-excellent/docker-build-push@v4
         with:
           image: natbodocker/appstored
           registry: docker.io
